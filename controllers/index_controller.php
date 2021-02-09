@@ -1,11 +1,11 @@
 <?php
 
 $feeds = [
-" Smartphones" => "https://www.01net.com/rss/smartphones/",
-" Tablettes" => "https://www.01net.com/rss/tablettes/",
-" Pc-portables" => "https://www.01net.com/rss/pc-portables/",
-" Pc-peripheriques" => "https://www.01net.com/rss/pc-peripheriques/", 
-" Photo" => "https://www.01net.com/rss/photo/"
+"Smartphones" => "https://www.01net.com/rss/smartphones/",
+"Tablettes" => "https://www.01net.com/rss/tablettes/",
+"Pc-portables" => "https://www.01net.com/rss/pc-portables/",
+"Pc-peripheriques" => "https://www.01net.com/rss/pc-peripheriques/", 
+"Photo" => "https://www.01net.com/rss/photo/"
 ];
 
 class BlogPost
@@ -63,12 +63,35 @@ class BlogFeed
 
 }
 
-
-if(isset($_POST['submit'])){
-    setcookie('theme', $_POST['theme'], time() - 1);
-    setcookie('feed', $_POST['feed'], time() - 1);
-    setcookie('nbArticle', $_POST['nbArticle'], time()+3600*24, "/");
-  
+$testCookie = false;
+if(isset($_COOKIE["theme"]) && isset($_COOKIE["feed"]) && isset($_COOKIE["nbArticle"]))
+{
+    if(!empty($_POST["theme"]) && !empty($_POST["feed"]) && !empty($_POST["nbArticle"]) && 
+    ($_POST["theme"] != $_COOKIE["theme"] || $_POST["feed"] != $_COOKIE["feed"] || $_POST["nbArticle"] != $_COOKIE["nbArticle"]))
+    {
+        setcookie('theme', $_POST['theme'], time()+3600*24, "/");
+        setcookie('feed', $_POST['feed'], time()+3600*24, "/");
+        setcookie('nbArticle', $_POST['nbArticle'], time()+3600*24, "/");
+        header("Location: index.php");
+        exit();            
+    }
+    else
+    {
+        $testCookie = true;
+    }
+    
 }
+else
+{
+    if(!empty($_POST["theme"]) && !empty($_POST["feed"]) && !empty($_POST["nbArticle"]))
+    {
+        setcookie('theme', $_POST['theme'], time()+3600*24, "/");
+        setcookie('feed', $_POST['feed'], time()+3600*24, "/");
+        setcookie('nbArticle', $_POST['nbArticle'], time()+3600*24, "/");
+        header("Location: index.php");
+        exit();
+    }
+}
+
 
 ?>
