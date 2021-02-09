@@ -12,10 +12,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <?php include("controllers/index_controller.php"); ?>
-=======
->>>>>>> 5ecdaf21619a2e8acddd0aabe94a1eb672698535
   <!-- Navbar avec le bouton Parametres -->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
@@ -56,12 +53,13 @@
               <input type="radio" class="form-check-input" name="nbArticle" id="article10" value="10" checked><label for="article10">10</label><br>
               <input type="radio" class="form-check-input" name="nbArticle" id="articleAll" value="All" checked><label for="articleAll">Tous les articles</label><br>
             </div>
-          </form>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" href="">Save changes</button>
+          <a type="button" class="btn btn-primary" href="">Save changes</a>
         </div>
+        </form>
       </div>
     </div>
   </div>

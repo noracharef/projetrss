@@ -73,12 +73,6 @@ class BlogFeed
 
 function returnFeeds($feeds)
 {
-    foreach ($feeds as $feed)
-    {
-        $feed1 = new BlogFeed($feed);
-        var_dump($feed1->posts);
-       
-    }
 }
 
 if(isset($_COOKIE['submit'])){
