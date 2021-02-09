@@ -24,7 +24,7 @@
   <!-- Modal affichant les paramètres -->
   <div class="modal fade" id="modalParameters" tabindex="-1" aria-labelledby="modalParametersLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content border-0">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Paramètres de personnalisation</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -56,90 +56,88 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <a type="button" class="btn btn-primary" href="">Save changes</a>
+          <button type="button" class="btn border-0 btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a type="submit" class="btn border-0 btn-light" href="">Save changes</a>
         </div>
         </form>
       </div>
     </div>
   </div>
 
-<?php
-  $testFeed = new BlogFeed("https://www.01net.com/rss/smartphones/");
-  $testnbArt = "5"; //remplacer par le cookie de nombre d'articles à afficher
-  if(intval($testnbArt))
-  {
-    $nbArt = intval($testnbArt);
-    for($i = 0; $i < $nbArt; $i++)
-    {
-      ?>
-    <div class="row justify-content-center">
-        <p>
-            <div class="col-1"><i class="fas fa-square"></i></div>
-            <div class="col-3"><?= $testFeed->posts[$i]->title ?></div>
-            <div class="col-3"><?= $testFeed->posts[$i]->date ?></div>
-            <br class="d-inline d-md-none">
-            <div class="col-2">
-                <button type="button" class="btn btn-primary mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText<?= $i ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $i ?>" style="float: right;">
-                    <i class="fas fa-plus mx-1"></i>Plus d'infos
-                </button>
-            </div>
-        </p>
-        <div class="col-12 my-2">
+  <div class="container-fluid">
+    <?php
+    $testFeed = new BlogFeed("https://www.01net.com/rss/smartphones/");
+    $testnbArt = "5"; //remplacer par le cookie de nombre d'articles à afficher
+    if (intval($testnbArt)) {
+      $nbArt = intval($testnbArt);
+      for ($i = 0; $i < $nbArt; $i++) {
+    ?>
+        <div class="row justify-content-center">
+          <p>
+          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle"></i></div>
+          <div class="col-8 col-lg-6 colArticle p-4 fs-4"><?= $testFeed->posts[$i]->title ?></div>
+          <div class="col-lg-2 d-none d-lg-block colArticle p-4" style="text-align: center"><?= $testFeed->posts[$i]->date ?></div>
+          <div class="col-1 colArticle p-4">
+            <button type="button" class="btn border-0 btn-light" data-bs-toggle="collapse" href="#collapseText<?= $i ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $i ?>" style="float: right;">
+              <i class="fas fa-plus mx-1"></i>
+            </button>
+          </div>
+          </p>
+          <div class="col-10">
             <div class="collapse" id="collapseText<?= $i ?>">
-                <div class="row">
-                    <div class="card card-body">
-                        <!--<div class="col-4">
+              <div class="row">
+                <div class="card card-body">
+                  <!--<div class="col-4">
                             <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
                         </div>-->
-                        <div class="col-7">
-                          <?= $testFeed->posts[$i]->summary ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-    <?php
-    }
-  }
-  else
-  {
-    foreach($testFeed -> posts as $post)
-    {
-      ?>
-      <div class="row justify-content-center">
-          <p>
-              <div class="col-1"><i class="fas fa-square"></i></div>
-              <div class="col-3"><?= $post->title ?></div>
-              <div class="col-3"><?= $post->date ?></div>
-              <br class="d-inline d-md-none">
-              <div class="col-2">
-                  <button type="button" class="btn btn-primary mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText2" role="button" aria-expanded="false" aria-controls="collapseText2" style="float: right;">
-                      <i class="fas fa-plus mx-1"></i>Plus d'infos
-                  </button>
-              </div>
-          </p>
-          <div class="col-12 my-2">
-              <div class="collapse" id="collapseText2">
-                  <div class="row">
-                      <div class="card card-body">
-                          <!--<div class="col-4">
-                              <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
-                          </div>-->
-                          <div class="col-7">
-                            <?= $post->summary ?>
-                          </div>
-                      </div>
+                  <div class="col-7 colArticle p-4">
+                    <?= $testFeed->posts[$i]->summary ?>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
         </div>
-      <?php          
+      <?php
+      }
+    } else {
+      foreach ($testFeed->posts as $post) {
+      ?>
+        <div class="row justify-content-center">
+          <p>
+          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle "></i></div>
+          <div class="col-8 col-lg-6 colArticle p-4 fs-4"><?= $post->title ?></div>
+          <div class="col-md-2 d-none d-lg-block colArticle p-4" style="text-align: center;"><?= $post->date ?></div>
+          <div class="col-1 colArticle p-4">
+            <button type="button" class="btn border-0 btn-light mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText2" role="button" aria-expanded="false" aria-controls="collapseText2" style="float: right;">
+              <i class="fas fa-plus mx-1"></i>
+            </button>
+          </div>
+          </p>
+          <div class="col-10 ">
+            <div class="collapse" id="collapseText2">
+              <div class="row">
+                <div class="card card-body">
+                  <!--<div class="col-4">
+                              <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
+                          </div>-->
+                  <div class="col-7 colArticle p-4">
+                    <?= $post->summary ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <?php
+      }
     }
-  }
-?>
-    
+    ?>
+
+  </div>
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
