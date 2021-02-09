@@ -1,11 +1,11 @@
 <?php
 
 $feeds = [
-"https://www.01net.com/rss/smartphones/",
-"https://www.01net.com/rss/tablettes/",
-"https://www.01net.com/rss/pc-portables/",
-"https://www.01net.com/rss/pc-peripheriques/", 
-"https://www.01net.com/rss/photo/"
+" Smartphones" => "https://www.01net.com/rss/smartphones/",
+" Tablettes" => "https://www.01net.com/rss/tablettes/",
+" Pc-portables" => "https://www.01net.com/rss/pc-portables/",
+" Pc-peripheriques" => "https://www.01net.com/rss/pc-peripheriques/", 
+" Photo" => "https://www.01net.com/rss/photo/"
 ];
 
 class BlogPost
@@ -77,8 +77,14 @@ function returnFeeds($feeds)
     {
         $feed1 = new BlogFeed($feed);
         var_dump($feed1->posts);
-        //foreach($feed1->posts as $post)
-        //{ $nouvelArticle = $post; }
+       
     }
+}
+
+if(isset($_COOKIE['submit'])){
+    setcookie('theme', $_POST['theme'], time() - 1);
+    setcookie('flux', $_POST['flux'], time() - 1);
+    setcookie('nbcards', $_POST['nbcards'], time() - 1);
+  
 }
 
