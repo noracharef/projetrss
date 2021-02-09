@@ -15,6 +15,7 @@ class BlogPost
     var $link;
     var $title;
     var $text;
+    var $enclosure;
 }
 
 class BlogFeed
@@ -37,11 +38,12 @@ class BlogFeed
             $post->link  = (string) $item->link;
             $post->title = (string) $item->title;
             $post->text  = (string) $item->description;
+            $post->enclosure = (string) $item->enclosure["url"];
 
             // Create summary as a shortened body and remove images, 
             // extraneous line breaks, etc.
-            $post->summary = $this->summarizeText($post->text);
-
+            
+            $post->summary = (string) strip_tags($item->description);
             $this->posts[] = $post;
         }
     }
@@ -59,27 +61,13 @@ class BlogFeed
         return $feed_uri;
     }
 
-    private function summarizeText($summary) {
-        $summary = strip_tags($summary);
-
-        // Truncate summary line to 100 characters
-        $max_len = 100;
-        if (strlen($summary) > $max_len)
-        {
-            $summary = substr($summary, 0, $max_len) . '...';
-        }
-        return $summary;
-    }
 }
 
-function returnFeeds($feeds)
-{
-}
 
-if(isset($_COOKIE['submit'])){
+if(isset($_POST['submit'])){
     setcookie('theme', $_POST['theme'], time() - 1);
-    setcookie('flux', $_POST['flux'], time() - 1);
-    setcookie('nbcards', $_POST['nbcards'], time() - 1);
+    setcookie('feed', $_POST['feed'], time() - 1);
+    setcookie('nbArticle', $_POST['nbArticle'], time()+3600*24, "/");
   
 }
 
