@@ -30,8 +30,9 @@ class BlogFeed
 
         foreach ($x->channel->item as $item)
         {
-            $post = new BlogPost();
-            $post->date  = (string) $item->pubDate;
+            setlocale(LC_TIME, "fr_FR.utf8", "fra"); //Régler l'accent sur les mois
+            $post = new BlogPost();            
+            $post->date  = (string) strftime("%a %e %B %G", strtotime($item->pubDate));
             $post->ts    = strtotime($item->pubDate);
             $post->link  = (string) $item->link;
             $post->title = (string) $item->title;
