@@ -10,51 +10,71 @@ $feeds = [
 
 ];
 
-$posts = array(); //tableau d'articles
 
-function __construct($file_or_url)
+
+class BlogPost
 {
+    var $date;
+    var $ts;
+    var $link;
 
-    foreach ($file_or_url->channel->item as $item) {
-        //tableau qui récupère les infos d'un article
-        $article = [
-            "date" => "",
-            "ts" => "",
-            "link" => "",
-            "title" => "",
-            "text" => "",
-            "summary" => ""
-        ];
+    var $title;
+    var $text;
+}
 
-        $article["date"] = (string) $item->pubDate;
-        $article["ts"] = strtotime($item->pubDate); //timestamp
-        $article["link"] = (string) $item->link;
-        $article["title"] = (string) $item->title;
-        $article["text"] = (string) $item->description;
+class BlogFeed
+{
+    var $posts = array();
 
-        // Create summary as a shortened body and remove images, 
-        // extraneous line breaks, etc.
-        $article["summary"] = summarizeText($article["text"]);
+    function __construct($file_or_url)
+    {
+        $file_or_url = $this->resolveFile($file_or_url);
+        if (!($x = simplexml_load_file($file_or_url)))
+            return;
 
-        $posts[] = $article;
+        foreach ($x->channel->item as $item)
+        {
+            $post = new BlogPost();
+            $post->date  = (string) $item->pubDate;
+            $post->ts    = strtotime($item->pubDate);
+            $post->link  = (string) $item->link;
+            $post->title = (string) $item->title;
+            $post->text  = (string) $item->description;
+
+            // Create summary as a shortened body and remove images, 
+            // extraneous line breaks, etc.
+            $post->summary = $this->summarizeText($post->text);
+
+            $this->posts[] = $post;
+        }
+    }
+
+    private function resolveFile($file_or_url) {
+        if (!preg_match('|^https?:|', $file_or_url))
+            $feed_uri = $_SERVER['DOCUMENT_ROOT'] .'/shared/xml/'. $file_or_url;
+        else
+            $feed_uri = $file_or_url;
+
+        return $feed_uri;
+    }
+
+    private function summarizeText($summary) {
+        $summary = strip_tags($summary);
+
+        // Truncate summary line to 100 characters
+        $max_len = 100;
+        if (strlen($summary) > $max_len)
+            $summary = substr($summary, 0, $max_len) . '...';
+
+        return $summary;
     }
 }
 
-function summarizeText($summary)
-{
-    $summary = strip_tags($summary);
 
-    // Truncate summary line to 100 characters
-    $max_len = 100;
-    if (strlen($summary) > $max_len) {
-        $summary = substr($summary, 0, $max_len) . '...';
-    }
-
-    return $summary;
-}
 
 foreach ($feeds as $feed){
-     __construct($feed);
+  $feed1 = new BlogFeed($feed);
 }
+
 
 ?>

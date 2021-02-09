@@ -17,6 +17,8 @@
   </div>
 </nav>
 
+<?php include("controllers/index_controller.php");?> 
+
 <div class="row justify-content-center">
     <div class="col-10 col-md-5 border m-2 ">
         <h1 style="text-align:center">test</h1>
@@ -50,6 +52,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
+        <p><?php var_dump($feeds);?></p>
       </div>
     </div>
   </div>
