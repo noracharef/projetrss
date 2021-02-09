@@ -1,3 +1,6 @@
+<?php require("controllers/index_controller.php"); 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,7 +15,6 @@
 </head>
 
 <body>
-  <?php include("controllers/index_controller.php"); ?>
   <!-- Navbar avec le bouton Parametres -->
   <header>
     <div class="container-fluid d-flex justify-content-end mt-4">
@@ -37,24 +39,45 @@
           <form action="index.php" method="post">
             <div>
               <h5>Choix du thème graphique</h5>
-              <input type="radio" class="form-check-input" name="theme" id="theme1" value="1" checked><label for="theme1">Thème 1</label><br>
-              <input type="radio" class="form-check-input" name="theme" id="theme2" value="2"><label for="theme1">Thème 2</label><br>
-              <input type="radio" class="form-check-input" name="theme" id="theme3" value="3"><label for="theme1">Thème 3</label><br>
+              <input type="radio" class="form-check-input" name="theme" id="theme1" value="1" <?php if((isset($_COOKIE["theme"]) && $_COOKIE["theme"] == "1") || !isset($_COOKIE["theme"])){ ?> checked <?php } ?>>
+                <label for="theme1">Thème 1</label><br>
+              <input type="radio" class="form-check-input" name="theme" id="theme2" value="2" <?php if(isset($_COOKIE["theme"]) && $_COOKIE["theme"] == "2" ){ ?> checked <?php } ?>>
+                <label for="theme1">Thème 2</label><br>
+              <input type="radio" class="form-check-input" name="theme" id="theme3" value="3" <?php if(isset($_COOKIE["theme"]) && $_COOKIE["theme"] == "3" ){ ?> checked <?php } ?>>
+                <label for="theme1">Thème 3</label><br>
             </div>
             <div>
               <h5>Choix des flux RSS</h5><!-- Creer un input check pour chaque lien dans le tableau Feeds -->
               <div>
-                <?php foreach ($feeds as $key => $value) { ?>
-                  <input type="radio" class="form-check-input" id="<?= $key ?>" name="feed" value="<?= $value ?>"><label for="<?= $key ?>"> <?= $key ?></label><br>
-                <?php } ?>
+                <?php 
+                foreach ($feeds as $key => $value)
+                { 
+                  if($key == array_key_first($feeds))
+                  {
+                    ?>
+                    <input type="radio" class="form-check-input" id="<?= $key ?>" name="feed" value="<?= $value ?>" <?php if((isset($_COOKIE["feed"]) && $_COOKIE["feed"] == $value) || !isset($_COOKIE["feed"])){ ?> checked <?php } ?>>
+                      <label for="<?= $key ?>"> <?= $key ?></label><br>
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <input type="radio" class="form-check-input" id="<?= $key ?>" name="feed" value="<?= $value ?>" <?php if(isset($_COOKIE["feed"]) && $_COOKIE["feed"] == $value){ ?> checked <?php } ?>>
+                      <label for="<?= $key ?>"> <?= $key ?></label><br>
+                    <?php 
+                  }                                  
+                } ?>
               </div>
             </div>
 
             <div>
               <h5>Nombre d'articles affichés</h5>
-              <input type="radio" class="form-check-input" name="nbArticle" id="article5" value="5" checked><label for="article5">5</label><br>
-              <input type="radio" class="form-check-input" name="nbArticle" id="article10" value="10"><label for="article10">10</label><br>
-              <input type="radio" class="form-check-input" name="nbArticle" id="articleAll" value="All"><label for="articleAll">Tous les articles</label><br>
+              <input type="radio" class="form-check-input" name="nbArticle" id="article5" value="5" <?php if((isset($_COOKIE["nbArticle"]) && $_COOKIE["nbArticle"] == "5") || !isset($_COOKIE["nbArticle"])){ ?> checked <?php } ?>>
+                <label for="article5">5</label><br>
+              <input type="radio" class="form-check-input" name="nbArticle" id="article10" value="10" <?php if(isset($_COOKIE["nbArticle"]) && $_COOKIE["nbArticle"] == "10"){ ?> checked <?php } ?>>
+                <label for="article10">10</label><br>
+              <input type="radio" class="form-check-input" name="nbArticle" id="articleAll" value="All" <?php if(isset($_COOKIE["nbArticle"]) && $_COOKIE["nbArticle"] == "All"){ ?> checked <?php } ?>>
+                <label for="articleAll">Tous les articles</label><br>
             </div>
 
             <div class="modal-footer">
@@ -69,12 +92,25 @@
 
   <div class="container-fluid">
     <?php
-    var_dump($_POST["theme"]);
-    var_dump($_POST["nbArticle"]);
-    $testFeed = new BlogFeed($_POST["feed"]);
+    if(isset($_COOKIE["feed"]))
+    {
+      echo "oui";
+    }
+    else
+    {
+      echo "non";
+    }
 
-    if (isset($_POST["nbArticle"]) && intval($_POST["nbArticle"])) {
-      $nbArt = intval($_POST["nbArticle"]);
+    if(isset($_COOKIE["feed"]))
+    {
+      $testFeed = new BlogFeed($_COOKIE["feed"]);
+    }
+    else
+    {
+      $testFeed = new BlogFeed($feeds[array_key_first($feeds)]);
+    }
+    if (isset($_COOKIE["nbArticle"]) && intval($_COOKIE["nbArticle"])) {
+      $nbArt = intval($_COOKIE["nbArticle"]);
       for ($i = 0; $i < $nbArt; $i++) {
     ?>
         <div class="row justify-content-center">
