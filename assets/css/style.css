@@ -1,0 +1,22 @@
+@font-face {
+    font-family: Manrope-Regular;
+    src: url("../fonts/Manrope-Regular.otf") format("truetype");
+}
+@font-face {
+    font-family: Manrope-bold;
+    src: url("../fonts/Manrope-bold.otf") format("truetype");
+}
+
+@font-face {
+    font-family: Manrope-medium;
+    src: url("../fonts/Manrope-medium.otf") format("truetype");
+}
+
+
+header{
+  background-image: url("../img/blueheader.png");
+  height: 670px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
