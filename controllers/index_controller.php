@@ -1,23 +1,18 @@
 <?php
 
 $feeds = [
-
 "https://www.01net.com/rss/smartphones/",
 "https://www.01net.com/rss/tablettes/",
 "https://www.01net.com/rss/pc-portables/",
 "https://www.01net.com/rss/pc-peripheriques/", 
 "https://www.01net.com/rss/photo/"
-
 ];
-
-
 
 class BlogPost
 {
     var $date;
     var $ts;
     var $link;
-
     var $title;
     var $text;
 }
@@ -25,12 +20,13 @@ class BlogPost
 class BlogFeed
 {
     var $posts = array();
-
     function __construct($file_or_url)
     {
         $file_or_url = $this->resolveFile($file_or_url);
         if (!($x = simplexml_load_file($file_or_url)))
+        {
             return;
+        }
 
         foreach ($x->channel->item as $item)
         {
@@ -51,9 +47,13 @@ class BlogFeed
 
     private function resolveFile($file_or_url) {
         if (!preg_match('|^https?:|', $file_or_url))
-            $feed_uri = $_SERVER['DOCUMENT_ROOT'] .'/shared/xml/'. $file_or_url;
+            {
+                $feed_uri = $_SERVER['DOCUMENT_ROOT'] .'/shared/xml/'. $file_or_url;
+            }
         else
-            $feed_uri = $file_or_url;
+            {
+                $feed_uri = $file_or_url;
+            }
 
         return $feed_uri;
     }
@@ -64,17 +64,21 @@ class BlogFeed
         // Truncate summary line to 100 characters
         $max_len = 100;
         if (strlen($summary) > $max_len)
+        {
             $summary = substr($summary, 0, $max_len) . '...';
-
+        }
         return $summary;
     }
 }
 
-
-
-foreach ($feeds as $feed){
-  $feed1 = new BlogFeed($feed);
+function returnFeeds($feeds)
+{
+    foreach ($feeds as $feed)
+    {
+        $feed1 = new BlogFeed($feed);
+        var_dump($feed1->posts);
+        //foreach($feed1->posts as $post)
+        //{ $nouvelArticle = $post; }
+    }
 }
 
-
-?>
