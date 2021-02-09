@@ -12,7 +12,10 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <?php include("controllers/index_controller.php"); ?>
+=======
+>>>>>>> 5ecdaf21619a2e8acddd0aabe94a1eb672698535
   <!-- Navbar avec le bouton Parametres -->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
