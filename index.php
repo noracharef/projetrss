@@ -14,13 +14,17 @@
 <body>
   <?php include("controllers/index_controller.php"); ?>
   <!-- Navbar avec le bouton Parametres -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" data-bs-toggle="modal" data-bs-target="#modalParameters">
-        <i class="fas fa-cog"></i>
-      </a>
+  <header>
+    <div class="container-fluid d-flex justify-content-end mt-4">
+      <div class="row">
+        <a class="navbar-brand" data-bs-toggle="modal" data-bs-target="#modalParameters">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="white" class="bi bi-gear-fill" viewBox="0 0 16 16">
+            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+          </svg>
+        </a>
+      </div>
     </div>
-  </nav>
+  </header>
   <!-- Modal affichant les paramètres -->
   <div class="modal fade" id="modalParameters" tabindex="-1" aria-labelledby="modalParametersLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -88,11 +92,14 @@
             <div class="collapse" id="collapseText<?= $i ?>">
               <div class="row">
                 <div class="card card-body">
-                  <!--<div class="col-4">
-                            <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
-                        </div>-->
-                  <div class="col-7 colArticle p-4">
+                  <div class="col-4">
+                            <img src="<?= $testFeed->posts[$i]->enclosure ?>" style="max-width : 100%">
+                        </div>
+                  <div class="col-6 p-4">
                     <?= $testFeed->posts[$i]->summary ?>
+                  </div>
+                  <div class="col-2 p-4">
+                    <a type="button" href="<?= $testFeed->posts[$i]->link ?>">Aller à</a>
                   </div>
                 </div>
               </div>
@@ -119,11 +126,14 @@
             <div class="collapse" id="collapseText2">
               <div class="row">
                 <div class="card card-body colArticle">
-                  <!--<div class="col-4">
-                              <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
-                          </div>-->
-                  <div class="col-7 p-4">
+                  <div class="col-4">
+                              <img src="<?= $post->enclosure ?>" style="max-width : 100%">
+                          </div>
+                  <div class="col-6 p-4">
                     <?= $post->summary ?>
+                  </div>
+                  <div class="col-2 p-4">
+                    <a type="button" href="<?= $post->link; ?>">Aller à</a>
                   </div>
                 </div>
               </div>
