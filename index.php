@@ -30,19 +30,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="post">
+          <form action="index.php" method="post">
             <div>
               <h5>Choix du thème graphique</h5>
-              <input type="radio" class="form-check-input" name="theme" id="theme1" value="theme1" checked><label for="theme1">Thème 1</label><br>
-              <input type="radio" class="form-check-input" name="theme" id="theme2" value="theme2"><label for="theme1">Thème 2</label><br>
-              <input type="radio" class="form-check-input" name="theme" id="theme3" value="theme3"><label for="theme1">Thème 3</label><br>
+              <input type="radio" class="form-check-input" name="theme" id="theme1" value="1" checked><label for="theme1">Thème 1</label><br>
+              <input type="radio" class="form-check-input" name="theme" id="theme2" value="2"><label for="theme1">Thème 2</label><br>
+              <input type="radio" class="form-check-input" name="theme" id="theme3" value="3"><label for="theme1">Thème 3</label><br>
             </div>
-
             <div>
               <h5>Choix des flux RSS</h5><!-- Creer un input check pour chaque lien dans le tableau Feeds -->
               <div>
                 <?php foreach ($feeds as $key => $value) { ?>
-                  <input type="checkbox" class="form-check-input" id="<?= $key ?>" name="<?= $key ?>" value="<?= $value ?>"><label for="<?= $key ?>"> <?= $key ?></label><br>
+                  <input type="radio" class="form-check-input" id="<?= $key ?>" name="feed" value="<?= $value ?>"><label for="<?= $key ?>"> <?= $key ?></label><br>
                 <?php } ?>
               </div>
             </div>
@@ -50,26 +49,28 @@
             <div>
               <h5>Nombre d'articles affichés</h5>
               <input type="radio" class="form-check-input" name="nbArticle" id="article5" value="5" checked><label for="article5">5</label><br>
-              <input type="radio" class="form-check-input" name="nbArticle" id="article10" value="10" checked><label for="article10">10</label><br>
-              <input type="radio" class="form-check-input" name="nbArticle" id="articleAll" value="All" checked><label for="articleAll">Tous les articles</label><br>
+              <input type="radio" class="form-check-input" name="nbArticle" id="article10" value="10"><label for="article10">10</label><br>
+              <input type="radio" class="form-check-input" name="nbArticle" id="articleAll" value="All"><label for="articleAll">Tous les articles</label><br>
             </div>
 
+            <div class="modal-footer">
+              <button type="button" class="btn border-0 btn-light" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn border-0 btn-light" id="submit" name="submit" href="">Save changes</button>
+            </div>
+          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn border-0 btn-secondary" data-bs-dismiss="modal">Close</button>
-          <a type="submit" class="btn border-0 btn-light" href="">Save changes</a>
-        </div>
-        </form>
       </div>
     </div>
   </div>
 
   <div class="container-fluid">
     <?php
-    $testFeed = new BlogFeed("https://www.01net.com/rss/smartphones/");
-    $testnbArt = "5"; //remplacer par le cookie de nombre d'articles à afficher
-    if (intval($testnbArt)) {
-      $nbArt = intval($testnbArt);
+    var_dump($_POST["theme"]);
+    var_dump($_POST["nbArticle"]);
+    $testFeed = new BlogFeed($_POST["feed"]);
+
+    if (isset($_POST["nbArticle"]) && intval($_POST["nbArticle"])) {
+      $nbArt = intval($_POST["nbArticle"]);
       for ($i = 0; $i < $nbArt; $i++) {
     ?>
         <div class="row justify-content-center">
@@ -117,11 +118,11 @@
           <div class="col-10 ">
             <div class="collapse" id="collapseText2">
               <div class="row">
-                <div class="card card-body">
+                <div class="card card-body colArticle">
                   <!--<div class="col-4">
                               <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
                           </div>-->
-                  <div class="col-7 colArticle p-4">
+                  <div class="col-7 p-4">
                     <?= $post->summary ?>
                   </div>
                 </div>
