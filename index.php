@@ -19,7 +19,9 @@
     </div>
   </nav>
 
-  <div class="row justify-content-center">
+<?php include("controllers/index_controller.php");?> 
+
+<div class="row justify-content-center">
     <div class="col-10 col-md-5 border m-2 ">
       <h1 style="text-align:center">test</h1>
       <h2 class="fs-5" style="text-align:center">08/02/2021</h2>
