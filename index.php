@@ -67,55 +67,88 @@
 
 
   <div class="row justify-content-center">
-    <!-- Creer une col + card à chaque article du tableau Posts -->
-    <div class="col-9 col-md-3 border m-2">
-      <h1 style="text-align:center">test</h1>
-      <h2 class="fs-5" style="text-align:center">08/02/2021</h2>
-      <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
-      <div class="col-12 border my-2">
-        <div class="collapse" id="collapseText1">
-          <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-          </div>
+        <p>
+            <div class="col-1"><i class="fas fa-square"></i></div>
+            <div class="col-3">Comparatif : les PC ultraportables et ultrabooks</div>
+            <div class="col-3">09/02/2021</div>
+            <br class="d-inline d-md-none">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText2" role="button" aria-expanded="false" aria-controls="collapseText2" style="float: right;">
+                    <i class="fas fa-plus mx-1"></i>Plus d'infos
+                </button>
+            </div>
+        </p>
+        <div class="col-12 my-2">
+            <div class="collapse" id="collapseText2">
+                <div class="row">
+                    <div class="card card-body">
+                        <div class="col-4">
+                            <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
+                        </div>
+                        <div class="col-7">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseText1" role="button" aria-expanded="false" aria-controls="collapseText1" style="float: right;">
-        <i class="fas fa-plus mx-1"></i>Plus d'infos
-      </button>
-    </div>
-    <div class="col-9 col-md-3 border m-2">
-      <h1 style="text-align: center;">test</h1>
-      <h2 class="fs-5" style="text-align:center">08/02/2021</h2>
-      <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
-      <div class="col-12 border my-2">
-        <div class="collapse" id="collapseText">
-          <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-          </div>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseText" role="button" aria-expanded="false" aria-controls="collapseText" style="float: right;">
-        <i class="fas fa-plus mx-1"></i>Plus d'infos
-      </button>
-    </div>
-    <div class="col-9 col-md-3 border m-2">
-      <h1 style="text-align: center;">test</h1>
-      <h2 class="fs-5" style="text-align:center">08/02/2021</h2>
-      <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
-      <div class="col-12 border my-2">
-        <div class="collapse" id="collapseText2">
-          <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-          </div>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseText2" role="button" aria-expanded="false" aria-controls="collapseText2" style="float: right;">
-        <i class="fas fa-plus mx-1"></i>Plus d'infos
-      </button>
     </div>
 
-  </div>
+    <div class="row justify-content-center">
+        <p>
+            <div class="col-1"><i class="fas fa-square"></i></div>
+            <div class="col-3">Comparatif : les PC ultraportables et ultrabooks</div>
+            <div class="col-3">09/02/2021</div>
+            <br class="d-inline d-md-none">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText2" role="button" aria-expanded="false" aria-controls="collapseText2" style="float: right;">
+                    <i class="fas fa-plus mx-1"></i>Plus d'infos
+                </button>
+            </div>
+        </p>
+        <div class="col-12 my-2">
+            <div class="collapse" id="collapseText2">
+                <div class="row">
+                    <div class="card card-body">
+                        <div class="col-4">
+                            <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
+                        </div>
+                        <div class="col-7">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row justify-content-center">
+        <p>
+            <div class="col-1"><i class="fas fa-square"></i></div>
+            <div class="col-3">Comparatif : les PC ultraportables et ultrabooks</div>
+            <div class="col-3">09/02/2021</div>
+            <br class="d-inline d-md-none">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText2" role="button" aria-expanded="false" aria-controls="collapseText2" style="float: right;">
+                    <i class="fas fa-plus mx-1"></i>Plus d'infos
+                </button>
+            </div>
+        </p>
+        <div class="col-12 my-2">
+            <div class="collapse" id="collapseText2">
+                <div class="row">
+                    <div class="card card-body">
+                        <div class="col-4">
+                            <img src="https://img.bfmtv.com/i/0/0/fd9/f75d839f7df97b9fa570c70c44b6b.jpg" style="max-width : 100%">
+                        </div>
+                        <div class="col-7">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
