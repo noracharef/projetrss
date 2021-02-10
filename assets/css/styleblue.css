@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Manrope-Regular;
+    src: url("../fonts/Manrope-Regular.otf") format("truetype");
+}
+@font-face {
+    font-family: Manrope-bold;
+    src: url("../fonts/Manrope-bold.otf") format("truetype");
+}
+
+@font-face {
+    font-family: Manrope-medium;
+    src: url("../fonts/Manrope-medium.otf") format("truetype");
+}
+
+
+
+body
+{
+    background:linear-gradient(180deg, #40e4de, #092636);
+    background-attachment: fixed;
+    max-height: 100vh;
+    color: #092636;
+}
+
+.modal-content
+{
+    background:linear-gradient(180deg, #40e4de, #092636);
+    background-attachment: fixed;
+    max-height: 100vh;
+    color: white;
+}
+
+.colArticle
+{
+    background-color: white;
+    color: #092636 ;
+}
+
+.btn
+{
+    background-color: white;
+    color: #40e4de;
+
+}
+
+#titleColor{
+    color: white;
+}
+
+a, a:hover{
+    text-decoration: none;
+    color: #092636;
+}
+
+h2, h3{
+    color:white;
+}
+
+footer{
+    background-color: white;
+    color:  #092636;
+}
+

@@ -35,6 +35,28 @@ body
 
 .btn
 {
-    background-color: #dddddd;
-    color: black;
+    background-color: black ;
+    color: #97ed02;
+}
+
+#titleColor
+{
+    color : #97ed02;
+}
+
+footer
+{
+    background-color: #97ed02;
+    color:black;
+}
+
+.card-body
+{
+    background-color: #444444;
+    color:white;
+}
+
+a, a:hover{
+    text-decoration: none;
+    color: #97ed02;
 }
