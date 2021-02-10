@@ -12,13 +12,7 @@
     src: url("../fonts/Manrope-medium.otf") format("truetype");
 }
 
-header{
-  background-image: url("../img/blueheader.png");
-  height: 870px;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-}
+
 
 body
 {
