@@ -37,4 +37,20 @@ body
 {
     background-color: #fffdfa ;
     color: #ff9100;
+
 }
+
+#titleColor{
+    color: #ff9100;
+}
+
+a, a:hover{
+    text-decoration: none;
+    color: #ff9100;
+}
+
+footer{
+    background-color: #ff9100fa ;
+    color: #fffd;
+}
+
