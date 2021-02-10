@@ -31,7 +31,7 @@ class BlogFeed
 
         foreach ($x->channel->item as $item)
         {
-            setlocale(LC_TIME, "fr_FR.utf8", "fra"); //Régler l'accent sur les mois
+            setlocale(LC_TIME, "fr_FR.UTF8", "fra.UTF8"); //Régler l'accent sur les mois
             $post = new BlogPost();            
             $post->date  = (string) strftime("%a %e %B %G", strtotime($item->pubDate));
             $post->ts    = strtotime($item->pubDate);
