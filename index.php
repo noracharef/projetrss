@@ -97,11 +97,21 @@
     <?php
     if(isset($_COOKIE["feed"]))
     {
-      echo "oui";
+      foreach($feeds as $key=>$value)
+      {
+        if($_COOKIE["feed"] == $value)
+        {
+          ?>
+          <h3><?= $key ?></h3>
+          <?php
+        }
+      }
     }
     else
     {
-      echo "non";
+      ?>
+      <h3><?= array_key_first($feeds) ?></h3>
+      <?php
     }
 
     if(isset($_COOKIE["feed"]))
@@ -118,7 +128,7 @@
     ?>
         <div class="row justify-content-center">
           <p>
-          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle"></i></div>
+          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle" style="color:<?php if(isset($_COOKIE["feed"])){changeIconColor($_COOKIE["feed"], $feeds);}else{changeIconColor($feeds["Smartphones"], $feeds);} ?>;"></i></div>
           <div class="col-8 col-lg-6 colArticle p-4 fs-4"><?= $testFeed->posts[$i]->title ?></div>
           <div class="col-lg-2 d-none d-lg-block colArticle p-4" style="text-align: center"><?= $testFeed->posts[$i]->date ?></div>
           <div class="col-1 colArticle p-4">
@@ -152,7 +162,7 @@
       ?>
         <div class="row justify-content-center">
           <p>
-          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle "></i></div>
+          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle " style="color:<?php if(isset($_COOKIE["feed"])){changeIconColor($_COOKIE["feed"], $feeds);}else{changeIconColor($feeds["Smartphones"], $feeds);} ?>;"></i></div>
           <div class="col-8 col-lg-6 colArticle p-4 fs-4"><?= $post->title ?></div>
           <div class="col-md-2 d-none d-lg-block colArticle p-4" style="text-align: center;"><?= $post->date ?></div>
           <div class="col-1 colArticle p-4">

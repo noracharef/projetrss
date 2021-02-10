@@ -63,13 +63,17 @@ class BlogFeed
 
 }
 
-// function changeIconColor($feed)
-// {
-//     switch($feed)
-//     {
-//         case $feed==$feeds[0]: echo "#"
-//     }
-// }
+function changeIconColor($feed, $feeds)
+{
+    switch($feed)
+    {
+        case $feed==$feeds["Smartphones"]: echo "#18E0E5";break;
+        case $feed==$feeds["Tablettes"]: echo "#22E518";break;
+        case $feed==$feeds["Pc-portables"]: echo "#F2F208";break;
+        case $feed==$feeds["Pc-peripheriques"]: echo "#F91902";break;
+        case $feed==$feeds["Photo"]: echo "#C102F9";break;
+    }
+}
 
 $testCookie = false;
 if(isset($_COOKIE["theme"]) && isset($_COOKIE["feed"]) && isset($_COOKIE["nbArticle"]))
