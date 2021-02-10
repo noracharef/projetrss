@@ -63,6 +63,14 @@ class BlogFeed
 
 }
 
+function changeIconColor($feed)
+{
+    foreach($feeds as $key=> $value)
+    {
+
+    }
+}
+
 $testCookie = false;
 if(isset($_COOKIE["theme"]) && isset($_COOKIE["feed"]) && isset($_COOKIE["nbArticle"]))
 {
