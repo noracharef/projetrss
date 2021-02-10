@@ -1,0 +1,40 @@
+@font-face {
+    font-family: Manrope-Regular;
+    src: url("../fonts/Manrope-Regular.otf") format("truetype");
+}
+@font-face {
+    font-family: Manrope-bold;
+    src: url("../fonts/Manrope-bold.otf") format("truetype");
+}
+
+@font-face {
+    font-family: Manrope-medium;
+    src: url("../fonts/Manrope-medium.otf") format("truetype");
+}
+
+
+
+body
+{
+    background-color: #dadee4;
+    background-attachment: fixed;
+    max-height: 100vh;
+    color: black;
+}
+
+.modal-content
+{
+    background-color: #dadee4;
+    color: black;
+}
+
+.colArticle
+{
+    background-color: #fffdfa;
+}
+
+.btn
+{
+    background-color: #fffdfa ;
+    color: #ff9100;
+}
