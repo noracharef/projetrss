@@ -167,7 +167,7 @@
                                                                                                     } else {
                                                                                                       changeIconColor($feeds["Smartphones"], $feeds);
                                                                                                     } ?>;"></i></div>
-          <div class="col-8 col-lg-6 colArticle mt-4 p-4"><?= $testFeed->posts[$i]->title ?></div>
+          <div id="boldfont" class="col-8 col-lg-6 colArticle mt-4 p-4"><?= $testFeed->posts[$i]->title ?></div>
           <div class="col-lg-2 d-none mt-4 d-lg-block colArticle p-4" style="text-align: center"><?= $testFeed->posts[$i]->date ?></div>
           <div class="col-1 colArticle mt-4 p-4">
             <button type="button" class="btn border-0 btn-light" data-bs-toggle="collapse" href="#collapseText<?= $i ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $i ?>" style="float: right;">
@@ -206,7 +206,7 @@
                                                                                                       } else {
                                                                                                         changeIconColor($feeds["Smartphones"], $feeds);
                                                                                                       } ?>;"></i></div>
-          <div class="col-8 col-lg-6 colArticle mt-4 p-4 fs-4"><?= $post->title ?></div>
+          <div id="boldfont" class="col-8 col-lg-6 colArticle mt-4 p-4  "><?= $post->title ?></div>
           <div class="col-md-2 mt-4 d-none d-lg-block colArticle p-4" style="text-align: center;"><?= $post->date ?></div>
           <div class="col-1 colArticle mt-4 p-4">
             <button type="button" class="btn border-0 btn-light mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText<?= $nbPost ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $nbPost ?>" style="float: right;">

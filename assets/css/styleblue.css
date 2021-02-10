@@ -1,15 +1,10 @@
 @font-face {
     font-family: Manrope-Regular;
-    src: url("../fonts/Manrope-Regular.otf") format("truetype");
+    src: url("../fonts/Manrope-Regular.otf") format("OpenType");
 }
 @font-face {
-    font-family: Manrope-bold;
-    src: url("../fonts/Manrope-bold.otf") format("truetype");
-}
-
-@font-face {
-    font-family: Manrope-medium;
-    src: url("../fonts/Manrope-medium.otf") format("truetype");
+    font-family: Manrope;
+    src: url("../fonts/Manrope.otf") format("OpenType");
 }
 
 
@@ -20,6 +15,9 @@ body
     background-attachment: fixed;
     max-height: 100vh;
     color: #092636;
+    font-family: Manrope-Regular;
+    src: url("../fonts/Manrope-Regular.otf") format("OpenType");
+
 }
 
 .modal-content
@@ -44,7 +42,15 @@ body
 }
 
 #titleColor{
-    color: white;
+    color: rgb(255, 255, 255);
+    font-family: Manrope;
+    src: url("../fonts/Manrope.otf") format("OpenType");
+ 
+}
+
+h5{
+    font-family: Manrope;
+    src: url("../fonts/Manrope.otf") format("OpenType");
 }
 
 a, a:hover{
@@ -59,5 +65,10 @@ h2, h3{
 footer{
     background-color: white;
     color:  #092636;
+}
+
+#boldfont{
+    font-family: Manrope;
+    src: url("../fonts/Manrope.otf") format("OpenType");
 }
 
