@@ -30,6 +30,25 @@
       </a>
     </div>
   </div>
+  <div class="col-12 mx-auto text-center">
+    <h1>Cactus ___</h1>
+    <h2>Vos actus qui ne manquent pas de piquants</h2>
+    <?php
+    if (isset($_COOKIE["feed"])) {
+      foreach ($feeds as $key => $value) {
+        if ($_COOKIE["feed"] == $value) {
+    ?>
+          <h3> Vous êtes dans la section <?= $key ?></h3>
+      <?php
+        }
+      }
+    } else {
+      ?>
+      <h3> Vous êtes dans la section <?= array_key_first($feeds) ?></h3>
+      <?php
+    }?>
+  </div>
+
   <!-- Modal affichant les paramètres -->
   <div class="modal fade" id="modalParameters" tabindex="-1" aria-labelledby="modalParametersLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -53,19 +72,19 @@
               <h5>Choix des flux RSS</h5><!-- Creer un input check pour chaque lien dans le tableau Feeds -->
               <div>
                 <?php
-                foreach ($feeds as $key => $value) {
-                  if ($key == array_key_first($feeds)) {
+                                    foreach ($feeds as $key => $value) {
+                                      if ($key == array_key_first($feeds)) {
                 ?>
                     <input type="radio" class="form-check-input" id="<?= $key ?>" name="feed" value="<?= $value ?>" <?php if ((isset($_COOKIE["feed"]) && $_COOKIE["feed"] == $value) || !isset($_COOKIE["feed"])) { ?> checked <?php } ?>>
                     <label for="<?= $key ?>"> <?= $key ?></label><br>
                   <?php
-                  } else {
+                                      } else {
                   ?>
                     <input type="radio" class="form-check-input" id="<?= $key ?>" name="feed" value="<?= $value ?>" <?php if (isset($_COOKIE["feed"]) && $_COOKIE["feed"] == $value) { ?> checked <?php } ?>>
                     <label for="<?= $key ?>"> <?= $key ?></label><br>
                 <?php
-                  }
-                } ?>
+                                      }
+                                    } ?>
               </div>
             </div>
 
@@ -90,107 +109,95 @@
   </div>
 
   <div class="container-fluid">
-    <?php
-    if (isset($_COOKIE["feed"])) {
-      foreach ($feeds as $key => $value) {
-        if ($_COOKIE["feed"] == $value) {
-    ?>
-          <h3><?= $key ?></h3>
-      <?php
-        }
-      }
-    } else {
-      ?>
-      <h3><?= array_key_first($feeds) ?></h3>
-      <?php
-    }
 
-    if (isset($_COOKIE["feed"])) {
-      $testFeed = new BlogFeed($_COOKIE["feed"]);
-    } else {
-      $testFeed = new BlogFeed($feeds[array_key_first($feeds)]);
-    }
-    if (isset($_COOKIE["nbArticle"]) && intval($_COOKIE["nbArticle"])) {
-      $nbArt = intval($_COOKIE["nbArticle"]);
-      for ($i = 0; $i < $nbArt; $i++) {
-      ?>
-        <div class="row justify-content-center">
-          <p>
-          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle" style="color:<?php if (isset($_COOKIE["feed"])) {
-                                                                                                  changeIconColor($_COOKIE["feed"], $feeds);
-                                                                                                } else {
-                                                                                                  changeIconColor($feeds["Smartphones"], $feeds);
-                                                                                                } ?>;"></i></div>
-          <div class="col-8 col-lg-6 colArticle p-4 fs-4"><?= $testFeed->posts[$i]->title ?></div>
-          <div class="col-lg-2 d-none d-lg-block colArticle p-4" style="text-align: center"><?= $testFeed->posts[$i]->date ?></div>
-          <div class="col-1 colArticle p-4">
-            <button type="button" class="btn border-0 btn-light" data-bs-toggle="collapse" href="#collapseText<?= $i ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $i ?>" style="float: right;">
-              <i class="fas fa-plus mx-1"></i>
-            </button>
-          </div>
-          </p>
-          <div class="col-10">
-            <div class="collapse" id="collapseText<?= $i ?>">
-              <div class="row">
-                <div class="card card-body">
-                  <div class="col-4">
-                    <img src="<?= $testFeed->posts[$i]->enclosure ?>" style="max-width : 100%">
-                  </div>
-                  <div class="col-6 p-4">
-                    <?= $testFeed->posts[$i]->summary ?>
-                  </div>
-                  <div class="col-2 p-4">
-                    <a type="button" href="<?= $testFeed->posts[$i]->link ?>">Aller à</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php
-      }
-    } else {
-      $nbPost = 0;
-      foreach ($testFeed->posts as $post) {
-      ?>
-        <div class="row justify-content-center">
-          <p>
-          <div class="col-1 colArticle p-4"><i class="fas fa-square align-middle " style="color:<?php if (isset($_COOKIE["feed"])) {
-                                                                                                  changeIconColor($_COOKIE["feed"], $feeds);
-                                                                                                } else {
-                                                                                                  changeIconColor($feeds["Smartphones"], $feeds);
-                                                                                                } ?>;"></i></div>
-          <div class="col-8 col-lg-6 colArticle p-4 fs-4"><?= $post->title ?></div>
-          <div class="col-md-2 d-none d-lg-block colArticle p-4" style="text-align: center;"><?= $post->date ?></div>
-          <div class="col-1 colArticle p-4">
-            <button type="button" class="btn border-0 btn-light mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText<?= $nbPost ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $nbPost ?>" style="float: right;">
-              <i class="fas fa-plus mx-1"></i>
-            </button>
-          </div>
-          </p>
-          <div class="col-10 ">
-            <div class="collapse" id="collapseText<?= $nbPost ?>">
-              <div class="row">
-                <div class="card card-body colArticle">
-                  <div class="col-4">
-                    <img src="<?= $post->enclosure ?>" style="max-width : 100%">
-                  </div>
-                  <div class="col-6 p-4">
-                    <?= $post->summary ?>
-                  </div>
-                  <div class="col-2 p-4">
-                    <a type="button" href="<?= $post->link; ?>">Aller à</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <h3><?= array_key_first($feeds) ?></h3>
     <?php
-      $nbPost++;
-      }
-    }
+                                  if (isset($_COOKIE["feed"])) {
+                                    $testFeed = new BlogFeed($_COOKIE["feed"]);
+                                  } else {
+                                    $testFeed = new BlogFeed($feeds[array_key_first($feeds)]);
+                                  }
+                                  if (isset($_COOKIE["nbArticle"]) && intval($_COOKIE["nbArticle"])) {
+                                    $nbArt = intval($_COOKIE["nbArticle"]);
+                                    for ($i = 0; $i < $nbArt; $i++) {
     ?>
+      <div class="row justify-content-center">
+
+        <div class="col-1 mt-4 colArticle p-4"><i class="fas fa-square align-middle" style="color:<?php if (isset($_COOKIE["feed"])) {
+                                                                                                    changeIconColor($_COOKIE["feed"], $feeds);
+                                                                                                  } else {
+                                                                                                    changeIconColor($feeds["Smartphones"], $feeds);
+                                                                                                  } ?>;"></i></div>
+        <div class="col-8 col-lg-6 colArticle mt-4 p-4"><?= $testFeed->posts[$i]->title ?></div>
+        <div class="col-lg-2 d-none mt-4 d-lg-block colArticle p-4" style="text-align: center"><?= $testFeed->posts[$i]->date ?></div>
+        <div class="col-1 colArticle mb-0 p-4">
+          <button type="button" class="btn border-0 btn-light" data-bs-toggle="collapse" href="#collapseText<?= $i ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $i ?>" style="float: right;">
+            <i class="fas fa-plus mx-1"></i>
+          </button>
+        </div>
+
+        <div class="col-10 mx-auto">
+          <div class="collapse" id="collapseText<?= $i ?>">
+            <div class="row m-0 p-0">
+              <div class="card card-body">
+                <div class="col-12">
+                  <img src="<?= $testFeed->posts[$i]->enclosure ?>" style="max-width : 100%">
+                </div>
+                <div class="col-12 p-4">
+                  <?= $testFeed->posts[$i]->summary ?>
+                </div>
+                <div class="col-12 p-4">
+                  <a type="button" href="<?= $testFeed->posts[$i]->link ?>">Aller à</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+                                    }
+                                  } else {
+                                    $nbPost = 0;
+                                    foreach ($testFeed->posts as $post) {
+    ?>
+      <div class="row justify-content-center">
+
+        <div class="col-1 colArticle mt-4 p-4"><i class="fas fa-square align-middle " style="color:<?php if (isset($_COOKIE["feed"])) {
+                                                                                                      changeIconColor($_COOKIE["feed"], $feeds);
+                                                                                                    } else {
+                                                                                                      changeIconColor($feeds["Smartphones"], $feeds);
+                                                                                                    } ?>;"></i></div>
+        <div class="col-8 col-lg-6 colArticle mt-4 p-4 fs-4"><?= $post->title ?></div>
+        <div class="col-md-2 mt-4 d-none d-lg-block colArticle p-4" style="text-align: center;"><?= $post->date ?></div>
+        <div class="col-1 colArticle mt-4 p-4">
+          <button type="button" class="btn border-0 btn-light mt-3 mt-md-0" data-bs-toggle="collapse" href="#collapseText<?= $nbPost ?>" role="button" aria-expanded="false" aria-controls="collapseText<?= $nbPost ?>" style="float: right;">
+            <i class="fas fa-plus mx-1"></i>
+          </button>
+        </div>
+
+        <div class="col-10 mt-0">
+          <div class="row">
+            <div class="collapse" id="collapseText<?= $nbPost ?>">
+              <div class="card card-body colArticle d-flex justify-content-centers">
+                <div class="col-6 mx-auto">
+                  <img src="<?= $post->enclosure ?>" style="max-width : 100%">
+                </div>
+                <div class="col-12 p-4 mx-auto">
+                  <?= $post->summary ?>
+                </div>
+                <div class="col-2 mx-auto p-4">
+                  <a type="button" href="<?= $post->link; ?>">Aller à</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <?php
+                                      $nbPost++;
+                                    }
+                                  }
+  ?>
 
   </div>
 
