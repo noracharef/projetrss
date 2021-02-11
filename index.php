@@ -215,17 +215,17 @@
           </div>
 
           <div class="col-10 mx-auto">
-            <div class="collapse" id="collapseText<?= $i ?>">
+            <div class="collapse" id="collapseText<?= $nbPost ?>">
               <div class="row my-0 p-0 ">
                 <div class="card card-body">
                   <div class="col-6 mx-auto">
-                    <img src="<?= $testFeed->posts[$i]->enclosure ?>" style="max-width : 100%">
+                    <img src="<?= $testFeed->posts[$nbPost]->enclosure ?>" style="max-width : 100%">
                   </div>
                   <div class="col-12 p-4 text-center">
-                    <?= $testFeed->posts[$i]->summary ?>
+                    <?= $testFeed->posts[$nbPost]->summary ?>
                   </div>
                   <div class="col-12 p-4 text-center">
-                    <a type="button" href="<?= $testFeed->posts[$i]->link ?>">Lire l'article sur le site ↗</a>
+                    <a type="button" href="<?= $testFeed->posts[$nbPost]->link ?>">Lire l'article sur le site ↗</a>
                   </div>
                 </div>
               </div>
