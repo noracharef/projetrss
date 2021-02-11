@@ -23,6 +23,7 @@ class BlogFeed
     var $posts = array();
     function __construct($file_or_url)
     {
+        //test parse du XML
         $file_or_url = $this->resolveFile($file_or_url);
         if (!($x = simplexml_load_file($file_or_url)))
         {
@@ -31,18 +32,14 @@ class BlogFeed
 
         foreach ($x->channel->item as $item)
         {
-            setlocale(LC_TIME, "fr_FR.UTF8", "fra.UTF8"); //Régler l'accent sur les mois
+            setlocale(LC_TIME, "fr_FR.UTF8", "fra.UTF8"); 
             $post = new BlogPost();            
             $post->date  = (string) strftime("%a %e %B %G", strtotime($item->pubDate));
             $post->ts    = strtotime($item->pubDate);
             $post->link  = (string) $item->link;
             $post->title = (string) $item->title;
             $post->text  = (string) $item->description;
-            $post->enclosure = (string) $item->enclosure["url"];
-
-            // Create summary as a shortened body and remove images, 
-            // extraneous line breaks, etc.
-            
+            $post->enclosure = (string) $item->enclosure["url"];            
             $post->summary = (string) strip_tags($item->description);
             $this->posts[] = $post;
         }

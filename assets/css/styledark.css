@@ -64,6 +64,10 @@ a, a:hover{
     color: #97ed02;
 }
 
+#linkMention{
+    text-decoration: none;
+    color:black;
+}
 
 #boldfont{
     font-family: Manrope;

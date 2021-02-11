@@ -53,6 +53,15 @@ a, a:hover{
     color: #ff9100;
 }
 
+#linkMention{
+    text-decoration: none;
+    color:white;
+}
+
+#collapseMentions{
+    color:black;
+}
+
 footer{
     background-color: #ff9100fa ;
     color: #fffd;
